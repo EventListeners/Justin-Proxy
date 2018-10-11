@@ -6,12 +6,13 @@ export let errorRate = new Rate("errors");
 
 export let options = {
   vus: 200,
-  rps: 2000,
+  rps: 1500,
   duration: "300s",
 };
 
 export default function() {
-  let res = http.get(`http://localhost:3000`);
+  var num = Math.floor(Math.random() * 1000000 + 9000000);
+  let res = http.get(`http://localhost:3000/artists/relatedArtists/${num}`);
   check(res, {
     "status was 200": r => r.status == 200 
   })
